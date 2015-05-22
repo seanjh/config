@@ -1,6 +1,13 @@
 " Begin .vimrc
 
+execute pathogen#infect()
 set nocompatible
+
+" Open a NERDTree automatically when vim starts up 
+autocmd vimenter * NERDTree
+" Open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ================ General Config ====================
 
@@ -12,6 +19,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set guifont=Consolas\ 14
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -19,7 +27,10 @@ set autoread                    "Reload files changed outside vim
 set hidden
 
 "turn on syntax highlighting
-syntax on
+syntax enable
+
+set background=dark
+colorscheme solarized
 
 " ================ Indentation ======================
 
@@ -34,6 +45,12 @@ set expandtab
 filetype plugin on
 filetype indent on
 
-colors elflord
+" ================ Key Mappings ======================
+
+map <C-n> :NERDTreeToggle<CR>
+
+
+" ================ NERDTree Settings ======================
+let g:NERDTreeChDirMode=2
 
 " End .vimrc
