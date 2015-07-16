@@ -1,0 +1,4 @@
+alias ..='cd ..'
+
+# Directory shortcuts
+alias s=~/Sync
